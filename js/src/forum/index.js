@@ -12,9 +12,9 @@ app.initializers.add('nearata/flarum-ext-signup-confirm-password', () => {
             'confirmPassword',
             m('.Form-group', [
                 m('input.FormControl', {
-                    name: 'confirmpassword',
+                    name: 'confirmPassword',
                     type: 'password',
-                    placeholder: app.translator.trans('nearata-signup-confirm-password.forum.confirm_password_placeholder'),
+                    placeholder: app.translator.trans('nearata-signup-confirm-password.forum.field_placeholder'),
                     value: this.confirmPassword(),
                     onchange: m.withAttr('value', this.confirmPassword),
                     disabled: this.loading
