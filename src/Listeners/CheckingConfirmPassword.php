@@ -25,11 +25,16 @@ class CheckingConfirmPassword
             return;
         }
 
+        $rules = $event->validator->getRules();
+
+        if (!Arr::has($rules, 'password')) {
+            return;
+        }
+
         $data = $event->validator->getData();
         $data['confirmPassword'] = $this->confirmPassword;
         $event->validator->setData($data);
 
-        $rules = $event->validator->getRules();
         $event->validator->addRules([
             'confirmPassword' => array_merge($rules['password'], ['same:password'])
         ]);
