@@ -31,6 +31,10 @@ class CheckingConfirmPassword
             return;
         }
 
+        if (!Arr::has($rules, 'username')) {
+            return;
+        }
+
         $data = $event->validator->getData();
         $data['confirmPassword'] = $this->confirmPassword;
         $event->validator->setData($data);
