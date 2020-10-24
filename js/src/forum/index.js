@@ -3,8 +3,8 @@ import { extend } from 'flarum/extend';
 import SignUpModal from 'flarum/components/SignUpModal';
 
 app.initializers.add('nearata/flarum-ext-signup-confirm-password', () => {
-    extend(SignUpModal.prototype, 'init', function() {
-        this.confirmPassword = m.prop('');
+    extend(SignUpModal.prototype, 'oninit', function() {
+        this.confirmPassword = '';
     });
 
     extend(SignUpModal.prototype, 'fields', function(items) {
@@ -15,8 +15,8 @@ app.initializers.add('nearata/flarum-ext-signup-confirm-password', () => {
                     name: 'confirmPassword',
                     type: 'password',
                     placeholder: app.translator.trans('nearata-signup-confirm-password.forum.field_placeholder'),
-                    value: this.confirmPassword(),
-                    onchange: m.withAttr('value', this.confirmPassword),
+                    value: this.confirmPassword,
+                    oninput: e => this.confirmPassword = e.target.value,
                     disabled: this.loading
                 })
             ]),
@@ -25,6 +25,6 @@ app.initializers.add('nearata/flarum-ext-signup-confirm-password', () => {
     });
 
     extend(SignUpModal.prototype, 'submitData', function(data) {
-        data.confirmPassword = this.confirmPassword();
+        data.confirmPassword = this.confirmPassword;
     });
 });
