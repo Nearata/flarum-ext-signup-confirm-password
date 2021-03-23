@@ -3,13 +3,13 @@
 namespace Nearata\SignUpConfirmPassword;
 
 use Flarum\Extend;
-use Illuminate\Contracts\Events\Dispatcher;
+
+use Flarum\User\Event\Saving;
 
 return [
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js'),
     new Extend\Locales(__DIR__ . '/resources/locale'),
-    function (Dispatcher $events) {
-        $events->subscribe(Listeners\CheckingConfirmPassword::class);
-    }
+    (new Extend\Event)
+        ->listen(Saving::class, ValidatePassword::class)
 ];

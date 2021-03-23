@@ -2,16 +2,24 @@
     "name": "nearata/flarum-ext-signup-confirm-password",
     "description": "Adds a confirm password field in the Sign Up modal.",
     "keywords": [
-        "flarum"
+        "flarum",
+        "confirm",
+        "password",
+        "check"
     ],
     "type": "flarum-extension",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/Nearata/flarum-ext-signup-confirm-password/issues",
+        "source": "https://github.com/Nearata/flarum-ext-signup-confirm-password",
+        "forum": "https://discuss.flarum.org/d/24527"
+    },
     "require": {
-        "flarum/core": "^0.1.0-beta.14"
+        "flarum/core": ">=0.1.0-beta.16 <=0.1.0"
     },
     "authors": [
         {
-            "name": "William Di Cicco",
+            "name": "Nearata",
             "email": "williamdicicco@protonmail.com",
             "role": "Developer"
         }
@@ -24,6 +32,7 @@
     "extra": {
         "flarum-extension": {
             "title": "Sign Up Confirm Password",
+            "category": "feature",
             "icon": {
                 "name": "fas fa-check-double",
                 "backgroundColor": "#2896bf",

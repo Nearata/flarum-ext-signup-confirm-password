@@ -1,22 +1,21 @@
-import app from 'flarum/app';
-import { extend } from 'flarum/extend';
-import SignUpModal from 'flarum/components/SignUpModal';
+import { extend } from 'flarum/common/extend';
+import SignUpModal from 'flarum/forum/components/SignUpModal';
+import Stream from 'flarum/common/utils/Stream';
 
-app.initializers.add('nearata/flarum-ext-signup-confirm-password', () => {
+app.initializers.add('nearata-signup-confirm-password', app => {
     extend(SignUpModal.prototype, 'oninit', function() {
-        this.confirmPassword = '';
+        this.confirmPassword = Stream('');
     });
 
     extend(SignUpModal.prototype, 'fields', function(items) {
         items.add(
-            'confirmPassword',
+            'nearataConfirmPassword',
             m('.Form-group', [
                 m('input.FormControl', {
                     name: 'confirmPassword',
                     type: 'password',
                     placeholder: app.translator.trans('nearata-signup-confirm-password.forum.field_placeholder'),
-                    value: this.confirmPassword,
-                    oninput: e => this.confirmPassword = e.target.value,
+                    bidi: this.confirmPassword,
                     disabled: this.loading
                 })
             ]),
