@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Changes](https://github.com/Nearata/flarum-ext-signup-confirm-password/compare/v2.2.0...main)
+[Changes](https://github.com/Nearata/flarum-ext-signup-confirm-password/compare/v3.0.0...main)
+
+## [3.0.0] - 2021-06-27
+
+- Updated to Flarum 1.0
 
 ## [2.2.0] - 2021-03-23
 
