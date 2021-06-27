@@ -3,7 +3,6 @@
 namespace Nearata\SignUpConfirmPassword;
 
 use Flarum\User\UserValidator;
-
 use Illuminate\Validation\Factory;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

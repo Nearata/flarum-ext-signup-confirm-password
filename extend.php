@@ -3,7 +3,6 @@
 namespace Nearata\SignUpConfirmPassword;
 
 use Flarum\Extend;
-
 use Flarum\User\Event\Saving;
 
 return [

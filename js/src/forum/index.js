@@ -1,8 +1,9 @@
 import { extend } from 'flarum/common/extend';
+import app from 'flarum/forum/app';
 import SignUpModal from 'flarum/forum/components/SignUpModal';
 import Stream from 'flarum/common/utils/Stream';
 
-app.initializers.add('nearata-signup-confirm-password', app => {
+app.initializers.add('nearata-signup-confirm-password', () => {
     extend(SignUpModal.prototype, 'oninit', function() {
         this.confirmPassword = Stream('');
     });
@@ -24,6 +25,6 @@ app.initializers.add('nearata-signup-confirm-password', app => {
     });
 
     extend(SignUpModal.prototype, 'submitData', function(data) {
-        data.confirmPassword = this.confirmPassword;
+        data.confirmPassword = this.confirmPassword();
     });
 });

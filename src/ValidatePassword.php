@@ -3,7 +3,6 @@
 namespace Nearata\SignUpConfirmPassword;
 
 use Flarum\User\Event\Saving;
-
 use Illuminate\Support\Arr;
 
 class ValidatePassword
