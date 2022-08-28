@@ -13,10 +13,6 @@ app.initializers.add("nearata-signup-confirm-password", () => {
             return;
         }
 
-        if (!this.password()) {
-            return;
-        }
-
         items.add(
             "nearataConfirmPassword",
             m(".Form-group", [
