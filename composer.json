@@ -8,7 +8,7 @@
         "check"
     ],
     "type": "flarum-extension",
-    "license": "MIT",
+    "license": "Unlicense",
     "support": {
         "issues": "https://github.com/Nearata/flarum-ext-signup-confirm-password/issues",
         "source": "https://github.com/Nearata/flarum-ext-signup-confirm-password",
@@ -20,7 +20,7 @@
     "authors": [
         {
             "name": "Nearata",
-            "email": "williamdicicco@protonmail.com",
+            "email": "nearata@protonmail.com",
             "role": "Developer"
         }
     ],
