@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Updated dependencies.
+- Add FoF OAuth support. [[#1](https://github.com/Nearata/flarum-ext-signup-confirm-password/issues/1)]
 
 ## [3.0.0] - 2021-06-27
 

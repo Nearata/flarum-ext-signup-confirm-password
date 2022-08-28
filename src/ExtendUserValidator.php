@@ -6,15 +6,15 @@ use Flarum\User\UserValidator;
 use Illuminate\Validation\Factory;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class CustomUserValidator extends UserValidator
+class ExtendUserValidator extends UserValidator
 {
     protected $rules;
 
-    public function __construct(Factory $validator, TranslatorInterface $translator, PublicUserValidator $userValidator)
+    public function __construct(Factory $validator, TranslatorInterface $translator, UserValidatorAccessor $userValidator)
     {
         parent::__construct($validator, $translator);
 
-        $this->rules = $userValidator->getUserValidatorRules();
+        $this->rules = $userValidator->getValidatorRules();
     }
 
     public function getRules()
@@ -26,9 +26,9 @@ class CustomUserValidator extends UserValidator
     }
 }
 
-class PublicUserValidator extends UserValidator
+class UserValidatorAccessor extends UserValidator
 {
-    public function getUserValidatorRules()
+    public function getValidatorRules()
     {
         return $this->getRules();
     }

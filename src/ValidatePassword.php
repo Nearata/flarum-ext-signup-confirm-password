@@ -9,20 +9,19 @@ class ValidatePassword
 {
     protected $validator;
 
-    public function __construct(CustomUserValidator $validator)
+    public function __construct(ExtendUserValidator $validator)
     {
         $this->validator = $validator;
     }
 
     public function handle(Saving $event)
     {
+        $password = Arr::get($event->data, 'attributes.password');
         $confirmPassword = Arr::get($event->data, 'attributes.confirmPassword');
 
-        if (is_null($confirmPassword)) {
+        if (is_null($password) && is_null($confirmPassword)) {
             return;
         }
-
-        $password = Arr::get($event->data, 'attributes.password');
 
         $attributes = array_merge(
             $event->user->getAttributes(),

@@ -9,6 +9,14 @@ app.initializers.add("nearata-signup-confirm-password", () => {
     });
 
     extend(SignUpModal.prototype, "fields", function (items) {
+        if (!items.has("password")) {
+            return;
+        }
+
+        if (!this.password()) {
+            return;
+        }
+
         items.add(
             "nearataConfirmPassword",
             m(".Form-group", [
@@ -27,6 +35,10 @@ app.initializers.add("nearata-signup-confirm-password", () => {
     });
 
     extend(SignUpModal.prototype, "submitData", function (data) {
+        if (!("password" in data)) {
+            return;
+        }
+
         data.confirmPassword = this.confirmPassword();
     });
 });
