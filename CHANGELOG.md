@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - bump php to 8
 - bump flarum to 1.7
+- php: refactoring
+- js: refactoring
 
 ## [3.0.1] - 2022-08-28
 

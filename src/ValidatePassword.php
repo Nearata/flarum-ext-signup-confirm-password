@@ -5,30 +5,39 @@ namespace Nearata\SignUpConfirmPassword;
 use Flarum\User\Event\Saving;
 use Illuminate\Support\Arr;
 
+/**
+ * ref: https://github.com/flarum/framework/blob/v1.7.1/framework/core/src/User/Command/RegisterUserHandler.php
+ */
 class ValidatePassword
 {
-    protected $validator;
+    /**
+     * @var PasswordValidator
+     */
+    protected $passwordValidator;
 
-    public function __construct(ExtendUserValidator $validator)
+    public function __construct(PasswordValidator $passwordValidator)
     {
-        $this->validator = $validator;
+        $this->passwordValidator = $passwordValidator;
     }
 
     public function handle(Saving $event)
     {
-        $password = Arr::get($event->data, 'attributes.password');
-        $confirmPassword = Arr::get($event->data, 'attributes.confirmPassword');
-
-        if (is_null($password) && is_null($confirmPassword)) {
+        if ($event->user->exists) {
             return;
         }
 
-        $attributes = array_merge(
-            $event->user->getAttributes(),
-            compact('password'),
-            compact('confirmPassword')
-        );
+        $data = $event->data;
 
-        $this->validator->assertValid($attributes);
+        /**
+         * User is registering from Auth Provider
+         */
+        if (isset($data['attributes']['token'])) {
+            return;
+        }
+
+        $password = Arr::get($data, 'attributes.password');
+        $password_confirmation = Arr::get($data, 'attributes.confirmPassword');
+
+        $this->passwordValidator->assertValid(array_merge($event->user->getAttributes(), compact('password'), compact('password_confirmation')));
     }
 }

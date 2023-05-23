@@ -43,5 +43,8 @@
                 "color": "#fff"
             }
         }
+    },
+    "scripts": {
+        "format": "pint src"
     }
 }
