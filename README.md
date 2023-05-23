@@ -2,6 +2,10 @@
 
 > Adds a confirm password field in the Sign Up modal.
 
+## Screenshots
+
+See the subfolder [screenshots](screenshots)
+
 ## Install
 
 ```sh
