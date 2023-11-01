@@ -26,6 +26,10 @@ class ValidatePassword
             return;
         }
 
+        if ($event->actor->isAdmin()) {
+            return;
+        }
+
         $data = $event->data;
 
         /**
